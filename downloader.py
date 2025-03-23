@@ -143,10 +143,13 @@ def iniciar_download():
 
                 processo.wait()
 
-                if processo.returncode == 0:
+                if processo.returncode == 0 or processo.returncode == 8:
                     atualizar_progresso(100, f"Download {index}/{total_links} concluído!")
+                elif processo.returncode == 4:
+                    atualizar_progresso(0, f"Erro 4 ao baixar {index}/{total_links}. Pulando...")
+                    continue
                 else:
-                    messagebox.showwarning("Aviso", f"Erro ao baixar {url}. Código: {processo.returncode}")
+                     messagebox.showwarning("Aviso", f"Erro ao baixar {url}. Código: {processo.returncode}")
 
             messagebox.showinfo("Sucesso", "Todos os downloads foram concluídos!")
             atualizar_progresso(100, "Todos os downloads finalizados!")

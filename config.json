@@ -1,4 +1,5 @@
 {
   "title": "Meu Gerenciador de Downloads2",
-  "slide_url": "https://www.seusite.com"
+  "slide_url": "https://www.seusite.com",
+  "rate_limit": "500k"
 }
